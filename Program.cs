@@ -45,12 +45,20 @@ namespace MyApp
             }
 
             // Calculate the average temperature above the cutoff
-            double averageTemperature = numberOfMeasurementsAboveCutOff > 0
-                ? sumTemperatures / numberOfMeasurementsAboveCutOff
-                : 0.0;
+            double averageTemperature = 0.0;
+            if (numberOfMeasurementsAboveCutOff > 0)
+            {
+                averageTemperature = sumTemperatures / numberOfMeasurementsAboveCutOff;
 
-            Console.WriteLine("Average temperature of measurements > " + temperatureCutOff +
-                              "°F was: " + averageTemperature + "°F");
+                Console.WriteLine("Average temperature of measurements > " + temperatureCutOff +
+                                  "°F was: " + averageTemperature + "°F");
+
+            } else
+            {
+                Console.WriteLine("Not enough temperatures above " + temperatureCutOff +
+                    " to calculate the average");
+            }
+
         }
     }
 }
